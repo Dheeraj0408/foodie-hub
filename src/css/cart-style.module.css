@@ -1,0 +1,72 @@
+.cardDetails {
+}
+.productQtyBtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5a8dee2e;
+  color: #5a8dee;
+  font-size: 11px;
+  transition: 0.3s;
+}
+.productQtyBtn:hover {
+  background-color: #5a8dee;
+  color: #fff;
+}
+.qtyInputBox {
+  max-width: 70px;
+  padding: 0px 5px;
+  min-height: 40px;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+  margin: 0px 5px;
+  color: #475f7b;
+  background-color: #fff;
+  border: 1px solid #dfe3e7;
+  transition: 0.3s;
+}
+.qtyInputBox:focus {
+  color: #475f7b;
+  background-color: #fff;
+  border-color: #5a8dee;
+  outline: 0;
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+}
+.productImg img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+.productDelete {
+  border: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+.productDelete:hover {
+  background-color: #ff5b5c;
+  color: #fff;
+}
+.cartEmpty {
+  text-align: center;
+  padding: 30px;
+}
+
+.cartEmpty i {
+  font-size: 45px;
+  color: #d5d6d8;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.cartEmpty p {
+  margin-bottom: 0;
+  color: #bdbdbd;
+  font-size: 16px;
+}
+
+.cartTable th,
+.cartTable td {
+  text-align: center;
+}
