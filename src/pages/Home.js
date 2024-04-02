@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../redux/features/fetchDataSlice";
 
 const Home = () => {
-  const { items,filteredItems } = useSelector((state) => state.productData);
+  const {isLoading,data,filteredData}=useSelector((state)=>state.fetchData)
+  // const { items,filteredItems } = useSelector((state) => state.productData);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,10 +34,18 @@ const Home = () => {
     toast.success("Item Added In Your Cart");
   };
 
-  // Filter items based on search query
-  const searchedItems = filteredItems.filter((item) =>
-    item.dish.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+   // Filter items based on search query and filteredData
+   let searchedItems = [];
+   if (filteredData.length > 0) {
+     searchedItems = filteredData.filter((item) =>
+       item.dish.toLowerCase().includes(searchQuery.toLowerCase())
+     );
+   } else {
+     searchedItems = data.filter((item) =>
+       item.dish.toLowerCase().includes(searchQuery.toLowerCase())
+     );
+   }
+ 
 
   return (
     <>

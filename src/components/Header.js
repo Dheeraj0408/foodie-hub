@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { Form, Nav } from "react-bootstrap";
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilteredItems } from "../redux/features/productDataSlice"; // Import the action creator
+import { setFilteredData } from "../redux/features/fetchDataSlice";
 import styles from "../css/header.module.css";
 
 const Header = ({ searchQuery, onSearchChange }) => {
@@ -15,7 +15,7 @@ const Header = ({ searchQuery, onSearchChange }) => {
 
   const handleFilterChange = (event) => {
     const filterValue = event.target.value;
-    dispatch(setFilteredItems(filterValue));
+    dispatch(setFilteredData(filterValue));
   };
 
   return (
