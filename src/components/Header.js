@@ -27,7 +27,7 @@ const Header = ({ searchQuery, onSearchChange }) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {location.pathname === "/" && (
-            <Form className="d-flex flex-grow-1">
+            <Form className="d-flex flex-grow-1 align-items-center justify-content-center">
               <Form.Label htmlFor="searchInput" visuallyHidden>
                 Search
               </Form.Label>
@@ -35,15 +35,17 @@ const Header = ({ searchQuery, onSearchChange }) => {
                 id="searchInput"
                 type="search"
                 placeholder="Search"
-                className="me-2"
+                className="me-2 ms-auto" // Add ms-auto for margin-left
                 aria-label="Search"
                 value={searchQuery}
                 onChange={onSearchChange}
+                style={{ width: "250px" }} 
               />
               <Form.Select
                 className="text-dark me-2"
                 aria-label="Filter"
                 onChange={handleFilterChange}
+                style={{ width: "150px" }} 
               >
                 <option>Filter By</option>
                 <optgroup label="Price">

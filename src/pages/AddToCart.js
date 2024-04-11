@@ -113,7 +113,7 @@ const AddToCart = () => {
                     {carts.map((data, index) => {
                       return (
                         <>
-                          <tr>
+                          <tr key={data.id}>
                             <td>
                               <button
                                 className={`btn btn-danger m-0 ${styles.productDelete}`}
@@ -151,12 +151,12 @@ const AddToCart = () => {
                                   value={data.qnty}
                                   disabled
                                 />
-                                <button className={styles.productQtyBtn}>
+                                <button className={styles.productQtyBtn} onClick={() => handleIncrement(data)}>
                                   <i
                                     className="fas fa-plus"
                                     type="button"
-                                    onClick={() => handleIncrement(data)}
-                                  ></i>
+                                    
+                                  />
                                 </button>
                               </div>
                             </td>

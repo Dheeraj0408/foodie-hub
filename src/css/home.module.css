@@ -1,5 +1,7 @@
 .hove{
     cursor: pointer;
+    padding: 5px;
+    width: 18rem;
     
 }
 .hove:hover{
@@ -26,6 +28,9 @@
     padding: 2px 1px;
     width: 45px;
 }
+.lowerData{
+height: 35px;
+}
 .lowerData h5{
     font-size: 16px;
     letter-spacing: 0.3px;
@@ -37,6 +42,10 @@ color:rgba(17,17,17,0.849) ;
     border-bottom: 1px solid rgba(17,17,17,0.449);
     margin-bottom: 10px;
 }
+.lastData{
+    margin-top: 5px;
+    margin-bottom: -10px;
+}
 .lastData .limg{
     width: 3rem;
     margin-left: 0;
@@ -45,4 +54,19 @@ color:rgba(17,17,17,0.849) ;
     width: 2.3rem;
     margin-right: 0;
 }
+.customSpinner{
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(1, 1, 18, 0.7);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
 
