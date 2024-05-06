@@ -56,7 +56,7 @@ const ProductDetailPage = () => {
             <>
               <Col md={6}>
                 <Card className="shadow">
-                  <Card.Img variant="top" src={product.imgdata} />
+                  <Card.Img variant="top" src={product.imgdata} style={{height:"330px"}}/>
                 </Card>
               </Col>
               <Col md={6}>

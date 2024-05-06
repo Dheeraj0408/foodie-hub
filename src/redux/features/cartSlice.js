@@ -12,24 +12,24 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     // Add to Cart 
-    // addToCart: (state, action) => {
-    //   const existingItem = state.carts.find((item) => item.id === action.payload.id);
-    //   if (existingItem) {
-    //     existingItem.qnty++;
-    //   } else {
-    //     state.carts.push({ ...action.payload, qnty: 1 });
-    //   }
-    // },
+    addToCartFromHome: (state, action) => {
+      const existingItem = state.carts.find((item) => item.id === action.payload.id);
+      if (existingItem) {
+        existingItem.qnty++;
+      } else {
+        state.carts.push({ ...action.payload, qnty: 1 });
+      }
+    },
     addToCart: (state, action) => {
       const { id, quantity } = action.payload;
       const existingItem = state.carts.find((item) => item.id === id);
 
       if (!existingItem) {
         state.carts.push({ ...action.payload });
-        toast.success("Item added to cart");
-      } else {
-        toast.error("Item already in cart");
       }
+      // } else {
+      //   toast.error("Item already in cart");
+      // }
     },
     increaseQuantity: (state, action) => {
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
@@ -41,6 +41,9 @@ const cartSlice = createSlice({
       const itemIndex = state.carts.findIndex((item) => item.id === action.payload.id);
       if (itemIndex !== -1 && state.carts[itemIndex].qnty > 1) {
         state.carts[itemIndex].qnty--;
+      }
+      else{
+        state.carts = state.carts.filter((item) => item.id !== action.payload);
       }
     },
     // Remove from Cart
@@ -57,5 +60,5 @@ const cartSlice = createSlice({
   }
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity, emptyCartItem, setSearchQuery } = cartSlice.actions;
+export const { addToCartFromHome,addToCart, removeFromCart, increaseQuantity, decreaseQuantity, emptyCartItem, setSearchQuery } = cartSlice.actions;
 export default cartSlice.reducer;

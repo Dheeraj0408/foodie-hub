@@ -6,7 +6,7 @@ import styles from "../css/footer.module.css";
 const Footer = () => {
   return (
     <>
-      <footer className={styles.footer}>
+      <footer className={`${styles.footer} bg-dark`}>
         <Container>
           <Row className="py-3">
             <Col xs={12} md={6} className="text-center text-md-start">

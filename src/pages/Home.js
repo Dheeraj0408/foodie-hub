@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import Header from "../components/Header";
 import styles from "../css/home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../redux/features/cartSlice";
+import { addToCartFromHome } from "../redux/features/cartSlice";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { fetchProducts } from "../redux/features/fetchDataSlice";
@@ -30,8 +30,8 @@ const Home = () => {
   };
 
   const send = (item) => {
-    dispatch(addToCart(item));
-    // toast.success("Item Added In Your Cart");
+    dispatch(addToCartFromHome(item));
+    toast.success("Item Added In Your Cart");
   };
 
   let searchedItems = [];

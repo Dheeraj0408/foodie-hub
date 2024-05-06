@@ -9,6 +9,7 @@ import {
   removeFromCart,
 } from "../redux/features/cartSlice";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../components/Footer";
 
 const AddToCart = () => {
   const { carts } = useSelector((state) => state.allCart);
@@ -66,7 +67,8 @@ const AddToCart = () => {
             <div className="card-header bg-dark p-3">
               <div className="d-flex justify-content-between align-items-center">
                 <h5 className="text-white m-0">
-                  Cart Calculation {carts.length > 0 ? `(${carts.length})` : ""}
+                  Cart
+                  {/* Cart Calculation {carts.length > 0 ? `(${carts.length})` : ""} */}
                 </h5>
                 {carts.length > 0 && (
                   <button
@@ -151,12 +153,10 @@ const AddToCart = () => {
                                   value={data.qnty}
                                   disabled
                                 />
-                                <button className={styles.productQtyBtn} onClick={() => handleIncrement(data)}>
-                                  <i
-                                    className="fas fa-plus"
-                                    type="button"
-                                    
-                                  />
+                                <button
+                                  className={styles.productQtyBtn}
+                                  onClick={() => handleIncrement(data)}
+                                ><i className="fas fa-plus" type="button" />
                                 </button>
                               </div>
                             </td>
@@ -188,6 +188,8 @@ const AddToCart = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };
