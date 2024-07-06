@@ -17,12 +17,12 @@ const AddToCart = () => {
   const [total, setTotal] = useState(0);
   const [quantity, setQuantity] = useState(0);
 
-  //+ button add to cart
+  // + button add to cart
   const handleIncrement = (e) => {
     dispatch(increaseQuantity(e));
     toast.success("Item added to your cart");
   };
-  //remove from cart
+  // remove from cart
   const handleDeleteItem = (e) => {
     dispatch(removeFromCart(e));
     toast.success("Item Removed From Your Cart");
@@ -35,10 +35,10 @@ const AddToCart = () => {
     dispatch(emptyCartItem());
     toast.success("Your Cart is Empty");
   };
-  //count total price
+  // count total price
   const totalPrice = () => {
     let totalprice = 0;
-    carts.map((ele, ind) => {
+    carts.map((ele) => {
       totalprice = ele.price * ele.qnty + totalprice;
     });
     setTotal(totalprice);
@@ -48,33 +48,27 @@ const AddToCart = () => {
     totalQuantity();
   }, [carts]);
 
-  //total qunatity
+  // total quantity
   const totalQuantity = () => {
     let totalqty = 0;
-    carts.map((ele, ind) => {
+    carts.map((ele) => {
       totalqty = ele.qnty + totalqty;
     });
     setQuantity(totalqty);
   };
+
   return (
     <>
       <Toaster />
       <Header />
-
       <div className="row justify-content-center m-1">
         <div className={`col-md-8 mt-5 mb-5 ${styles.cardDetails}`}>
           <div className="card">
             <div className="card-header bg-dark p-3">
               <div className="d-flex justify-content-between align-items-center">
-                <h5 className="text-white m-0">
-                  Cart
-                  {/* Cart Calculation {carts.length > 0 ? `(${carts.length})` : ""} */}
-                </h5>
+                <h5 className="text-white m-0">Cart</h5>
                 {carts.length > 0 && (
-                  <button
-                    className="btn btn-danger btn-sm mt-0"
-                    onClick={emptycart}
-                  >
+                  <button className="btn btn-danger btn-sm mt-0" onClick={emptycart}>
                     <i className="fas fa-trash-alt mx-1"></i>
                     <span>Empty Cart</span>
                   </button>
@@ -96,9 +90,7 @@ const AddToCart = () => {
                   </tbody>
                 </table>
               ) : (
-                <table
-                  className={`table table-responsive-sm mb-0 ${styles.cartTable}`}
-                >
+                <table className={`table table-responsive-sm mb-0 ${styles.cartTable}`}>
                   <thead>
                     <tr>
                       <th>Action</th>
@@ -112,59 +104,54 @@ const AddToCart = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {carts.map((data, index) => {
+                    {carts.map((data) => {
                       return (
-                        <>
-                          <tr key={data.id}>
-                            <td>
+                        <tr key={data.id}>
+                          <td>
+                            <button
+                              className={`btn btn-danger m-0 ${styles.productDelete}`}
+                              onClick={() => handleDeleteItem(data.id)}
+                            >
+                              <i className="fas fa-trash-alt mx-1" />
+                            </button>
+                          </td>
+                          <td>
+                            <div className={styles.productImg}>
+                              <img src={data.imgdata} />
+                            </div>
+                          </td>
+                          <td>
+                            <p>{data.dish}</p>
+                          </td>
+                          <td>{data.price}</td>
+                          <td>
+                            <div className="d-flex align-items-center">
                               <button
-                                className={`btn btn-danger m-0 ${styles.productDelete}`}
-                                onClick={() => handleDeleteItem(data.id)}
+                                className={styles.productQtyBtn}
+                                onClick={
+                                  data.qnty <= 1
+                                    ? () => handleDeleteItem(data.id)
+                                    : () => handleDecrement(data)
+                                }
                               >
-                                {" "}
-                                <i className="fas fa-trash-alt mx-1"></i>
+                                <i className="fas fa-minus" />
                               </button>
-                            </td>
-                            <td>
-                              <div className={styles.productImg}>
-                                <img src={data.imgdata} />
-                              </div>
-                            </td>
-                            <td>
-                              <p>{data.dish}</p>
-                            </td>
-                            <td>{data.price}</td>
-                            <td>
-                              <div className="d-flex align-items-center">
-                                <button className={styles.productQtyBtn}>
-                                  <i
-                                    className="fas fa-minus"
-                                    type="button"
-                                    onClick={
-                                      data.qnty <= 1
-                                        ? () => handleDeleteItem(data.id)
-                                        : () => handleDecrement(data)
-                                    }
-                                  ></i>
-                                </button>
-                                <input
-                                  type="text"
-                                  className={styles.qtyInputBox}
-                                  value={data.qnty}
-                                  disabled
-                                />
-                                <button
-                                  className={styles.productQtyBtn}
-                                  onClick={() => handleIncrement(data)}
-                                ><i className="fas fa-plus" type="button" />
-                                </button>
-                              </div>
-                            </td>
-                            <td className="text-right">
-                              {data.qnty * data.price}
-                            </td>
-                          </tr>
-                        </>
+                              <input
+                                type="text"
+                                className={styles.qtyInputBox}
+                                value={data.qnty}
+                                disabled
+                              />
+                              <button
+                                className={styles.productQtyBtn}
+                                onClick={() => handleIncrement(data)}
+                              >
+                                <i className="fas fa-plus" />
+                              </button>
+                            </div>
+                          </td>
+                          <td className="text-right">{data.qnty * data.price}</td>
+                        </tr>
                       );
                     })}
                   </tbody>
@@ -188,7 +175,6 @@ const AddToCart = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );

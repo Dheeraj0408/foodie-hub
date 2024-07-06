@@ -23,3 +23,30 @@
 .headerForm optgroup, .headerForm option{
     text-align: center;
 }
+
+@media only screen and (min-width: 315px) and (max-width: 667px) {
+  .header_heading {
+    margin-top: 20px;
+   font-size: small;
+  }
+  .navbar{
+    height: 4rem;
+  }
+  .searchBar{
+    border: 2px solid red;
+    margin-top: 15px;
+    height: 30px !important;
+    width: 80px !important;
+  }
+  .dropDown{
+    margin-top: 15px;
+    height: 30px !important;
+    width: 10px !important;
+  } 
+  .cartIcon{
+    font-size: small;
+    margin-bottom: 0 !important;
+    left: -10px;
+    top: 10px;
+  }
+}

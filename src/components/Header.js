@@ -19,15 +19,14 @@ const Header = ({ searchQuery, onSearchChange }) => {
   };
 
   return (
-    <Navbar className="bg-dark">
+    <Navbar className={`bg-dark ${styles.navbar}`}>
       <Container>
         <Navbar.Brand href="/">
-          <h4 className="text-light mt-1">Foodie&nbsp;Hub</h4>
+          <h4 className={`text-light mt-1  ${styles.header_heading}`}>Foodie&nbsp;Hub</h4>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           {location.pathname === "/" && (
-            <Form className="d-flex flex-grow-1 align-items-center justify-content-center">
+            <Form className={`d-flex flex-grow-1 align-items-center justify-content-center`}>
               <Form.Label htmlFor="searchInput" visuallyHidden>
                 Search
               </Form.Label>
@@ -35,19 +34,19 @@ const Header = ({ searchQuery, onSearchChange }) => {
                 id="searchInput"
                 type="search"
                 placeholder="Search"
-                className="me-2 ms-auto" // Add ms-auto for margin-left
+                className={`me-2 ms-auto ${styles.searchBar}`} // Add ms-auto for margin-left
                 aria-label="Search"
                 value={searchQuery}
                 onChange={onSearchChange}
-                style={{ width: "250px" }} 
+                style={{ width: "30%" }} 
               />
               <Form.Select
-                className="text-dark me-2"
+                className={`text-dark me-2 ${styles.dropDown}`}
                 aria-label="Filter"
                 onChange={handleFilterChange}
-                style={{ width: "150px" }} 
+                style={{ width: "15%" }} 
               >
-                <option>Filter By</option>
+                <option className={styles.opt1}>Filter By</option>
                 <optgroup label="Price">
                   <option value="priceLowToHigh">Price: Low to High</option>
                   <option value="priceHighToLow">Price: High to Low</option>
